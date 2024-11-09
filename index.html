@@ -1,10 +1,171 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <ul>
+    <li><a href="#home" class="active">主页</a></li>
+
+
+
+    <style>
+        ul {
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+             background-color: #999;
+             overflow: hidden;
+ 
+         li a {
+             color: white;
+             padding: 14px 16px;
+             display: inline-block;
+             text-decoration: none;
+         }
+        
+         li>a.active {
+             background-color: green;
+         }
+        
+         li>a:hover:not(a.active),
+         .dropbtn:hover {
+             background-color: #555;
+         }
+        
+         .dropdown-content {
+             display: none;
+             position: absolute;
+             background-color: #f9f9f9;
+             min-width: 100px;
+             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+         }
+        
+         .dropdown-content a {
+             color: black;
+             display: block;
+         }
+        
+         .dropdown-content a:hover {
+             background-color: #f1f1f1;
+             color: deepskyblue;
+         }
+        
+         .dropdown:hover .dropdown-content {
+             display: block;
+         }</style></ul>
   <p><b><em>黄桥初中教育集团新城分校</em></b></p>
   <p><i>初一12班</i></p>
+  <div>
+    <canvas id="clock" height="300px" width="300px"></canvas>
+</div>
+<style>
+    div {
+      text-align: center;
+    }
+    #clock {
+      border: 1px solid #cccccc;
+    }
+</style>
+
+<script>
+    var dom = document.getElementById('clock');
+    var ctx = dom.getContext('2d');
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+    var r = width / 2;
+    var rem = width/200;
+    function drawBackground() {
+        ctx.save(); //存储当前环境变量；
+        ctx.translate(r, r); //重置坐标到r，r
+        ctx.beginPath(); // 起始一条路径
+        ctx.lineWidth = 10*rem; //设置线宽10；
+        ctx.arc(0, 0, r - ctx.lineWidth /2, 0, 2 * Math.PI, false);
+        ctx.stroke();
+        var hourNumbers = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2]; //定义数组
+        ctx.font = 18*rem+"px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+           hourNumbers.forEach(function(number, i) {
+            var rad = 2 * Math.PI / 12 * i;
+            var x = Math.cos(rad) * (r - 30*rem);
+            var y = Math.sin(rad) * (r - 30*rem);
+            ctx.fillText(number, x, y);
+        });
+        for (var i = 0; i < 60; i++) {
+            var rad = 2 * Math.PI / 60 * i;
+            var x = Math.cos(rad) * (r - 18*rem);
+            var y = Math.sin(rad) * (r - 18*rem);
+            ctx.beginPath();
+            if (i % 5 === 0) {
+                ctx.arc(x, y, 2*rem, 0, 2 * Math.PI, false);
+                ctx.fillStyle = "#000";
+            } else {
+                ctx.arc(x, y, 2*rem, 0, 2 * Math.PI, false);
+                ctx.fillStyle = "#ccc";
+            }
+            ctx.fill();
+        }
+    }
+    function drawHour(hour, minute) {
+      ctx.save();
+      ctx.beginPath();
+      var rad = 2 * Math.PI / 12 * hour;
+      var mrad = 2 * Math.PI / 12 / 60 * minute;
+      ctx.rotate(rad + mrad);
+      ctx.lineWidth = 6*rem;
+      ctx.lineCap = "round";
+      ctx.moveTo(0, 10*rem);
+      ctx.lineTo(0, -r / 2);
+      ctx.stroke();
+      ctx.restore();
+    }
+    function drawMinute(minute) {
+      ctx.save();
+      ctx.beginPath();
+      var rad = 2 * Math.PI / 60 * minute;
+      ctx.rotate(rad);
+      ctx.lineWidth = 3*rem;
+      ctx.lineCap = "round";
+      ctx.moveTo(0, 10*rem);
+      ctx.lineTo(0, -r + 30*rem);
+      ctx.stroke();
+      ctx.restore();
+    }
+    function drawSecond(second) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.fillStyle = 'red';
+      var rad = 2 * Math.PI / 60 * second;
+      ctx.rotate(rad);
+      ctx.moveTo(-2*rem, 20*rem);
+      ctx.lineTo(2*rem, 20*rem);
+      ctx.lineTo(1, -r + 16*rem);
+      ctx.lineTo(-1, -r + 16*rem);
+      ctx.fill();
+      ctx.restore();
+    }
+    function drawDot() {
+      ctx.beginPath();
+      ctx.fillStyle = '#fff';
+      ctx.arc(0, 0, 3*rem, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+    function draw01() {
+      ctx.clearRect(0, 0, width, height);
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+      drawBackground();
+      drawHour(hour, minute);
+      drawMinute(minute);
+      drawSecond(second);
+      drawDot();
+      ctx.restore();
+    }
+    draw01();
+    setInterval(draw01, 1000);
+</script>
   <hr>
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1823172971&auto=1&height=66"></iframe>
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27203936&auto=1&height=66"></iframe>
   <p><font color="#FF0000"><b>战!!!!!!!
     MCGA(Make Class12 Great Again)!!!!!!!</b></font></p>
   <hr>
@@ -16,15 +177,123 @@
   <p><font color="#FF0000">语文老师:<font color="#FFCCCC">杨柳</font> </font></p> 
   <p><font color="#FF0000">数学老师:<font color="#0000FF">徐建林</font> </font></p> 
   <p>①班干部:</p>
-  <p><font color="#70F3FF">班长:<font color="#E2EAF4">唐宇恒</font></font> (棒棒不是米糖)</p> 
+  <p><font color="#70F3FF">班长:<font color="#E2EAF4">唐宇恒</font></font> <span class="mask">(棒棒不是米糖)</span>
+<style>
+    .mask {
+        background-color: #252525;
+        color: #252525;
+        transition: color 0.5s;
+    }
+    
+    .mask:hover {
+        color: #ffffff;
+    }
+</style></p> 
   <p><font color="#70F3FF">语文课代表:<font color="#E7DDFF">陈瑜</font> </font></p> 
-  <p><font color="#70F3FF">英语课代表:<font color="#D20103">(火批):<font color="#C0C0C0">谭思源</font> </font></font></p> 
+  <p><font color="#70F3FF">英语课代表<font color="#D20103"><span class="mask">(火批)</span>
+<style>
+    .mask {
+        background-color: #252525;
+        color: #252525;
+        transition: color 0.5s;
+    }
+    
+    .mask:hover {
+        color: #ffffff;
+    }
+    </style><font color="#C0C0C0"><font color="#70F3FF">:</font>谭思源</font> </font></font></p> 
   <hr>
   <p><font color="#EFC3CA">JOIN US!</font></p>
-  <font color="#1E90FF">站长邮箱:qianluo110911@outlook.com</font><br>
-  <font color="	#9370DB">站长QQ:2099600388</font><br>
-  	<br>
-  ( つ•̀ω•́)つ✧
-    </body>
+  <p><font color="#1E90FF">站长邮箱:qianluo110911@outloo.com</font></p>
+  <p><font color="#1E90FF">站长QQ:2099600388</font></p>
+      <p>( つ•̀ω•́)つ✧</p>
+    
+    <hr>
+    <div class="container">
+    <div class="output" id="output">0</div>
+    <button class="button" onclick="clearOutput()" id="clear">C</button>
+    <button class="button" onclick="appendToOutput('%')">%</button>
+    <button class="button" onclick="appendToOutput('/')">/</button>
+    <button class="button" onclick="appendToOutput('*')">*</button>
+    <button class="button" onclick="appendToOutput('7')">7</button>
+    <button class="button" onclick="appendToOutput('8')">8</button>
+    <button class="button" onclick="appendToOutput('9')">9</button>
+    <button class="button" onclick="appendToOutput('-')">-</button>
+    <button class="button" onclick="appendToOutput('4')">4</button>
+    <button class="button" onclick="appendToOutput('5')">5</button>
+    <button class="button" onclick="appendToOutput('6')">6</button>
+    <button class="button" onclick="appendToOutput('+')">+</button>
+    <button class="button" onclick="appendToOutput('1')">1</button>
+    <button class="button" onclick="appendToOutput('2')">2</button>
+    <button class="button" onclick="appendToOutput('3')">3</button>
+    <button class="button equals" onclick="calculate()">=</button>
+    <button class="button" onclick="appendToOutput('0')">0</button>
+    <button class="button" onclick="appendToOutput('.')">.</button>
+</div>
+<style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      margin: auto;
+      margin-top: 100px;
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px #ccc;
+    }
+    
+    .output {
+      font-size: 2em;
+      text-align: right;
+      padding: 10px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+    
+    .button {
+      font-size: 1.5em;
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background-color: #ccc;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background-color: #999;
+    }
+    
+    .clear {
+      background-color: #ff6666;
+    }
+    
+    .equals {
+      background-color: #66cc66;
+    }
+</style>
 
-</html>
+<script>
+    let output = document.getElementById("output");
+    
+    function appendToOutput(value) {
+      if (output.innerHTML === "0") {
+        output.innerHTML = value;
+      } else {
+        output.innerHTML += value;
+      }
+    }
+    
+    function clearOutput() {
+      output.innerHTML = "0";
+    }
+    
+    function calculate() {
+      output.innerHTML = eval(output.innerHTML);
+    }
+</script>
