@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("11/3/2024 22:00:00");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "本网站已运行: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+    show_runtime();
+</script>
 <meta charset="utf-8">
 <title>	Class12</title>
 <style>
@@ -156,7 +174,7 @@ body {
       <h2>公告</h2>
       <h5>2024年11月10日</h5>
       <p>网站大改</p>
-      <p>网站搜的一下变成了你们看到的这样awa</p>
+      <p>网站唰的一下变成了你们看到的这样awa</p>
     </div>
     <hr>
     <div class="row">
@@ -298,3 +316,4 @@ function showError(error)
 
 <div class="footer">
   <h4><b>初一12班<b></b></b>
+    <h5><span id="runtime_span"></span></h5>
