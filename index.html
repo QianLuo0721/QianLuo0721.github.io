@@ -92,7 +92,7 @@ body {
 }
  
 /* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800000px) {
   .leftcolumn, .rightcolumn {   
     width: 100%;
     padding: 0;
@@ -100,7 +100,7 @@ body {
 }
  
 /* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 40px) {
   .topnav a {
     float: none;
     width: 100%;
@@ -119,27 +119,32 @@ body {
   <a href="https://github.com/QianLuo0721">github</a>
   <a href="https://space.bilibili.com/3493109784644051">bilibili</a>
   <a href="https://www.zhihu.com/people/jiang-su-qi-lin-hu-yu">知乎</a>
-  <a href="https://www.qianluo0721.github.io" style="float:right">Welcome to Class 12</a>
+  <a href="https://upos-sz-estgoss.bilivideo.com/upgcxcode/31/12/500001650011231/500001650011231-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1731212064&gen=playurlv2&os=upos&oi=1385955528&trid=e6ec4e17bb6e4e258a67543b394bdd8cO&mid=0&platform=html5&og=08&upsig=00e3651a8239f3d9b04515ae70a65758&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&bvc=vod&nettype=1&orderid=0,3&buvid=&build=7330300&f=O_0_0&bw=60035&logo=80000000" style="float:right">Welcome to Class 12</a>
 </div>
   <div class="rightcolumn">
     <div class="card">
       <h2>教师团队</h2>
-      <p>班主任/英语老师:高明月</p>
-      <p>语文老师:杨柳</p>
-      <p>数学老师:徐建林</p>
+      <p><font color="#FF0000">班主任:<font color="#FF00FF">高明月</font> </font></p> 
+  <p><font color="#FF0000">语文老师:<font color="#FFCCCC">杨柳</font> </font></p> 
+  <p><font color="#FF0000">数学老师:<font color="#0000FF">徐建林</font> </font></p> 
+
     </div>
   <div class="rightcolumn">
     <div class="card">
       <h2>班干部</h2>
-      <p>班长:唐宇恒</p>
-      <p>语文课代表:陈瑜</p>
-      <p>英语课代表:谭思源</p>
+      <p><font color="#66CCFF">班长:<font color="#D3D3D3">唐宇恒</font> </font></p> 
+  <p><font color="#66CCFF">语文课代表:<font color="#D3D3D3">陈瑜</font> </font></p> 
+  <p><font color="#66CCFF">英语课代表:<font color="#D3D3D3">谭思源</font> </font></p> 
+
     </div>
     <div class="card">
-      <h3>加入我们</h3>
+      <h3><p><font color="#EFC3CA">JOIN US!</font></p>
+</h3>
     <div class="card">
       <h3><i>We need you</i></h3>
-      <p>站长邮箱:qianluo110911@outlook.com</p>
+      <p><font color="#1E90FF">站长邮箱:qianluo110911@outlook.com</font></p>
+  <p><font color="#1E90FF">站长QQ:2099600388</font></p>
+      <p>( つ•̀ω•́)つ✧</p>
     </div>
   </div>
 </div>
@@ -152,6 +157,143 @@ body {
       <p>网站大改</p>
       <p>网站搜的一下变成了你们看到的这样awa</p>
     </div>
+    <hr>
+    <div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+    <div class="container">
+    <div class="output" id="output">0</div>
+    <button class="button" onclick="clearOutput()" id="clear">C</button>
+    <button class="button" onclick="appendToOutput('%')">%</button>
+    <button class="button" onclick="appendToOutput('/')">/</button>
+    <button class="button" onclick="appendToOutput('*')">*</button>
+    <button class="button" onclick="appendToOutput('7')">7</button>
+    <button class="button" onclick="appendToOutput('8')">8</button>
+    <button class="button" onclick="appendToOutput('9')">9</button>
+    <button class="button" onclick="appendToOutput('-')">-</button>
+    <button class="button" onclick="appendToOutput('4')">4</button>
+    <button class="button" onclick="appendToOutput('5')">5</button>
+    <button class="button" onclick="appendToOutput('6')">6</button>
+    <button class="button" onclick="appendToOutput('+')">+</button>
+    <button class="button" onclick="appendToOutput('1')">1</button>
+    <button class="button" onclick="appendToOutput('2')">2</button>
+    <button class="button" onclick="appendToOutput('3')">3</button>
+    <button class="button equals" onclick="calculate()">=</button>
+    <button class="button" onclick="appendToOutput('0')">0</button>
+    <button class="button" onclick="appendToOutput('.')">.</button>
+</div>
+<style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      margin: auto;
+      margin-top: 100px;
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px #ccc;
+    }
+    
+    .output {
+      font-size: 2em;
+      text-align: right;
+      padding: 10px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+    
+    .button {
+      font-size: 1.5em;
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      border: none;
+      background-color: #ccc;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background-color: #999;
+    }
+    
+    .clear {
+      background-color: #ff6666;
+    }
+    
+    .equals {
+      background-color: #66cc66;
+    }
+</style>
+
+<script>
+    let output = document.getElementById("output");
+    
+    function appendToOutput(value) {
+      if (output.innerHTML === "0") {
+        output.innerHTML = value;
+      } else {
+        output.innerHTML += value;
+      }
+    }
+    
+    function clearOutput() {
+      output.innerHTML = "0";
+    }
+    
+    function calculate() {
+      output.innerHTML = eval(output.innerHTML);
+    }
+      </script></div>
+
+      <hr>
+    <div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+  <p id="demo">点击按钮获取您当前坐标（需要定位权限）：</p>
+<button onclick="getLocation()">戳我</button>
+<script>
+var x=document.getElementById("demo");
+function getLocation()
+{
+	if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(showPosition,showError);
+	}
+	else
+	{
+		x.innerHTML="该浏览器不支持定位。";
+	}
+}
+function showPosition(position)
+{
+	x.innerHTML="纬度: " + position.coords.latitude + 
+	"<br>经度: " + position.coords.longitude;	
+}
+function showError(error)
+{
+	switch(error.code) 
+	{
+		case error.PERMISSION_DENIED:
+			x.innerHTML="用户拒绝对获取地理位置的请求。"
+			break;
+		case error.POSITION_UNAVAILABLE:
+			x.innerHTML="位置信息是不可用的。"
+			break;
+		case error.TIMEOUT:
+			x.innerHTML="请求用户地理位置超时。"
+			break;
+		case error.UNKNOWN_ERROR:
+			x.innerHTML="未知错误。"
+			break;
+	}
+}
+      </script></div>
+    <hr>
 
 <div class="footer">
   <h4><b>初一12班<b></b></b>
