@@ -517,14 +517,27 @@ body {
  
 <body>
  
-  <iframe id="bili-radio"
-    src="https://player.bilibili.com/player.html?isOutside=true&aid=401032854&bvid=BV1Fo4y1w7Ex&cid=1128155877&p=1&high_quality=1"
-    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
- 
   <script>
     document.getElementById("bili-radio").style.height = document.getElementById("bili-radio").scrollWidth * 0.76 + "px";
   </script>
- 
+
+	<!-- 弹窗代码开始 -->
+<div class="web_notice" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 99999;">
+    <div style="position: fixed; top: 50%; left: 50%; width: 320px; background: #FFF; transform: translate(-50%, -50%); border-radius: 40px; padding: 50px 40px;">
+        <button style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;" onclick="closePopup();">×</button>
+        <h3 style="font-weight: bold; text-align: center; font-size: 30px;">网站通知</h3>
+        <div style="font-size: 16px; margin-top: 26px; line-height: 30px; color: #999;">
+            公告：旧网站已不再更新，请访问最新网站<br><br>
+            <p><a href="https://fzr110911.github.io" target="_blank" style="display: block; text-align: center; font-weight: bold; font-size: 19px; line-height: 60px; margin: 0 auto; margin-top: 45px; border-radius: 32px; width: 80%;" onclick="redirectUrlToActive();" rel='nofollow'>https://fzr110911.github.io</a></p>
+        </div>
+    </div>
+</div>
+<script>
+    function closePopup() {
+        document.querySelector('.web_notice').style.display = 'none';
+    }
+</script>
+<!-- 弹窗代码结束 -->
 </body>
 
 <div class="topnav">
@@ -573,17 +586,17 @@ body {
   <div class="leftcolumn">
     <div class="card">
       <h2>NEWS</h2>
-      <h5>2024/12/15</h5>
-      <p style="font-family: 宋体;">《极限竞速：地平线4》下架</p>
-      <p style="font-family: 宋体;">永不落幕的嘉年华终还是落幕了</p>
+      <h5>2025/3/22</h5>
+      <p style="font-family: 宋体;">六百六十六</p>
+      <p style="font-family: 宋体;">AHH</p>
     </div>
 	  <div class="row">
   <div class="leftcolumn">
     <div class="card">
       <h2>公告</h2>
-      <h5>2024~2025</h5>
-      <p style="font-family: 宋体;">跨年群</p>
-      <p style="font-family: 宋体;">QQ群群号:1011793380</p><a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=cldW92uGWDqIrF87tWRqH_c3gJ99vM4N&jump_from=webapi&authKey=Xgy95mQhlNX6x28QSfXuRoRXteuafnotgog3C2ygLapq5/ryvdgeX1K45xZPbejv"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="跨年群" title="跨年群"></a>
+      <h5>2025</h5>
+      <p style="font-family: 宋体;">NEW WEBSITE</p>
+      <p style="font-family: 宋体;">访问网址发布页：<a href="https://fzr.github.io/index" target="_blank">https://fzr.github.io/index</a></p><a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=cldW92uGWDqIrF87tWRqH_c3gJ99vM4N&jump_from=webapi&authKey=Xgy95mQhlNX6x28QSfXuRoRXteuafnotgog3C2ygLapq5/ryvdgeX1K45xZPbejv"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="跨年群" title="跨年群"></a>
     </div>
     <hr>
     <div class="row">
